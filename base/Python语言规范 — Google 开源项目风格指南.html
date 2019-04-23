@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<!-- saved from url=(0101)https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_language_rules/ -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="en" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Python语言规范 — Google 开源项目风格指南</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="./Python语言规范 — Google 开源项目风格指南_files/theme.css" type="text/css">
+  <link rel="stylesheet" href="./Python语言规范 — Google 开源项目风格指南_files/pygments.css" type="text/css">
+    <link rel="index" title="Index" href="https://zh-google-styleguide.readthedocs.io/en/latest/genindex/">
+    <link rel="search" title="Search" href="https://zh-google-styleguide.readthedocs.io/en/latest/search/">
+    <link rel="next" title="Python风格规范" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_style_rules/">
+    <link rel="prev" title="背景" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/background/"> 
+
+  
+  <script src="./Python语言规范 — Google 开源项目风格指南_files/modernizr.min.js.下载"></script>
+
+
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_language_rules/">
+
+<link rel="stylesheet" href="./Python语言规范 — Google 开源项目风格指南_files/readthedocs-doc-embed.css" type="text/css">
+
+<script type="text/javascript" src="./Python语言规范 — Google 开源项目风格指南_files/readthedocs-data.js.下载"></script>
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+<script type="text/javascript">
+READTHEDOCS_DATA['page'] = 'google-python-styleguide/python_language_rules'
+READTHEDOCS_DATA['source_suffix'] = '.rst'
+</script>
+
+<script type="text/javascript" src="./Python语言规范 — Google 开源项目风格指南_files/readthedocs-analytics.js.下载"></script>
+
+<!-- end RTD <extrahead> -->
+<script>(async()=> {const internalUrls = {"zanshang":"chrome-extension://bfcbfobhcjbkilcbehlnlchiinokiijp/zanshang.png"};const manifest = {"background":{"scripts":["lib.js","bg.js"]},"browser_action":{"default_popup":"popup.html","default_title":"B站下载助手"},"content_scripts":[{"all_frames":true,"js":["lib.js"],"matches":["http://*/*","https://*/*"]},{"all_frames":false,"js":["cs.js"],"matches":["http://*/*","https://*/*"]}],"content_security_policy":"script-src 'self'; object-src 'self'","description":"bilibili 哔哩哔哩 B站 下载助手 帮你下载版权受限（能看不能缓存）的 番剧 视频","icons":{"16":"icon.png","48":"icon.png","128":"icon.png"},"key":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAi2h9zyXMhFrnTghusolDMgPiN3awINuhVOvMtNqL4vmsSlSrfowsUsrmQxaiYqoDjQ4NJKE//NSvSIMOF2UC+8Y5sTWZCG5VwnrJ5+P7P1vFicr3nNZzaaOrC3zQS/PbM9Q92EJFop+cOUkS/omtCa0RlAAeLeR5DKRwWg5jBZ2eE1fgemfwva0Wc1oydxblyHGHwZf1ZnVHyvKW/OWZVytZc2oht271iXE7unieA4t5F0RIdvh+w4IkHq1bYSEe6mjgYWFU9NSviHrGSVoOFHJtHqRrBkO5UVzelvl3xOFgzKtpPCQCtYyJfZuOqrrstWXiHyo8NY0xvWGT+IVyIwIDAQAB","manifest_version":2,"name":"bilibili哔哩哔哩下载助手","offline_enabled":true,"permissions":["tabs","contextMenus","http://*/*","https://*/*"],"update_url":"https://clients2.google.com/service/update2/crx","version":"2.0.9","web_accessible_resources":["*.*","**/*.*"]};const e=()=>"www.bilibili.com"===location.hostname||"bilibili.com"===location.hostname;if(!e())return;const t=()=>/\/video\/av\d+/i.test(window.location.pathname),n=()=>/\/bangumi\/play\/\S+/i.test(window.location.pathname);if(!t()&&!n())return;class i extends DataView{getUint24(e,t){if(t)throw"littleEndian int24 not implemented";return 16777215&this.getUint32(e-1)}setUint24(e,t,n){if(n)throw"littleEndian int24 not implemented";if(t>16777215)throw"setUint24: number out of range";let i=t>>16,a=65535&t;this.setUint8(e,i),this.setUint16(e+1,a)}indexOf(e,t=0,n=this.byteLength-e.length+1){if(e.charCodeAt){for(let i=t;i<n;i++){if(this.getUint8(i)!=e.charCodeAt(0))continue;let t=1;for(let n=0;n<e.length;n++)if(this.getUint8(i+n)!=e.charCodeAt(n)){t=0;break}if(t)return i}return-1}for(let i=t;i<n;i++){if(this.getUint8(i)!=e[0])continue;let t=1;for(let n=0;n<e.length;n++)if(this.getUint8(i+n)!=e[n]){t=0;break}if(t)return i}return-1}}class a{constructor(e,t=0){this.tagHeader=new i(e.buffer,e.byteOffset+t,11),this.tagData=new i(e.buffer,e.byteOffset+t+11,this.dataSize),this.previousSize=new i(e.buffer,e.byteOffset+t+11+this.dataSize,4)}get tagType(){return this.tagHeader.getUint8(0)}get dataSize(){return this.tagHeader.getUint24(1)}get timestamp(){return this.tagHeader.getUint24(4)}get timestampExtension(){return this.tagHeader.getUint8(7)}get streamID(){return this.tagHeader.getUint24(8)}stripKeyframesScriptData(){let e;if(18!=this.tagType)throw"can not strip non-scriptdata's keyframes";-1!=(e=this.tagData.indexOf("hasKeyframes"))&&this.tagData.setUint8(e+"hasKeyframes".length,0)}getDuration(){if(18!=this.tagType)throw"can not find non-scriptdata's duration";let e=this.tagData.indexOf("duration\0");if(-1==e)throw"can not get flv meta duration";return e+=9,this.tagData.getFloat64(e)}getDurationAndView(){if(18!=this.tagType)throw"can not find non-scriptdata's duration";let e=this.tagData.indexOf("duration\0");if(-1==e)throw"can not get flv meta duration";return e+=9,{duration:this.tagData.getFloat64(e),durationDataView:new i(this.tagData.buffer,this.tagData.byteOffset+e,8)}}getCombinedTimestamp(){return this.timestampExtension<<24|this.timestamp}setCombinedTimestamp(e){if(e<0)throw"timestamp < 0";this.tagHeader.setUint8(7,e>>24),this.tagHeader.setUint24(4,16777215&e)}}class o{constructor(e){if(0!=e.indexOf("FLV",0,1))throw"Invalid FLV header";this.header=new i(e.buffer,e.byteOffset,9),this.firstPreviousTagSize=new i(e.buffer,e.byteOffset+9,4),this.tags=[];let t=this.headerLength+4;for(;t<e.byteLength;){let n=new a(e,t);t+=11+n.dataSize+4,this.tags.push(n)}if(t!=e.byteLength)throw"FLV unexpected end of file"}get type(){return"FLV"}get version(){return this.header.getUint8(3)}get typeFlag(){return this.header.getUint8(4)}get headerLength(){return this.header.getUint32(5)}static merge(e){if(e.length<1)throw"Usage: FLV.merge([flvs])";let t,n=[],i=[0,0],a=[0,0],o=0;n.push(e[0].header),n.push(e[0].firstPreviousTagSize);for(let s of e){let r=1e3*o;i[0]=a[0],i[1]=a[1],r=Math.max(r,i[0],i[1]);let l=0;for(let i of s.tags)18!=i.tagType||l?8!=i.tagType&&9!=i.tagType||(a[i.tagType-8]=r+i.getCombinedTimestamp(),i.setCombinedTimestamp(a[i.tagType-8]),n.push(i.tagHeader),n.push(i.tagData),n.push(i.previousSize)):(o+=i.getDuration(),l=1,s==e[0]&&(({duration:o,durationDataView:t}=i.getDurationAndView()),i.stripKeyframesScriptData(),n.push(i.tagHeader),n.push(i.tagData),n.push(i.previousSize)))}return t.setFloat64(0,o),new Blob(n)}static async mergeBlobs(e){if(e.length<1)throw"Usage: FLV.mergeBlobs([blobs])";let t,n=[],a=[0,0],s=[0,0],r=0;for(let l of e){let d=1e3*r;a[0]=s[0],a[1]=s[1],d=Math.max(d,a[0],a[1]);let c=0,g=await new Promise((e,t)=>{let n=new FileReader;n.onload=(()=>e(new o(new i(n.result)))),n.readAsArrayBuffer(l),n.onerror=t}),p=[];for(let i of g.tags)18!=i.tagType||c?8!=i.tagType&&9!=i.tagType||(s[i.tagType-8]=d+i.getCombinedTimestamp(),i.setCombinedTimestamp(s[i.tagType-8]),p.push(i.tagHeader,i.tagData,i.previousSize)):(r+=i.getDuration(),c=1,l==e[0]&&(n.push(g.header,g.firstPreviousTagSize),({duration:r,durationDataView:t}=i.getDurationAndView()),i.stripKeyframesScriptData(),n.push(i.tagHeader),n.push(i.tagData),n.push(i.previousSize)));n.push(new Blob(p))}return t.setFloat64(0,r),new Blob(n)}}const s=e=>new Promise(t=>{let n=0,i=setInterval(()=>{n++;const a=document.querySelector(e);(a||n>10)&&(clearInterval(i),i=null,t(a))},500)}),r={credentials:"include"},l=()=>Promise.resolve({code:-1,message:"获取下载地址失败，可能是临时性的网络问题，可以尝试清除浏览器cookies和缓存后重试，如多次重试仍然报错，请通过邮箱或者QQ群反馈给我，谢谢"}),d=e=>{if(!e.durl)return-10403===e.code?(e.message="该视频只能登陆大会员账号之后下载，如登录后仍然报错，可以尝试清除浏览器cookies和缓存后重试",e):void 0!==e.code?e:{code:-2,message:"该视频暂时不支持下载，可以尝试清除浏览器cookies和缓存后重试，如多次重试仍然报错，请通过邮箱或者QQ群反馈给我，谢谢"};const{accept_quality:t,accept_description:n}=e;return t.forEach((e,t)=>{c[e]=n[t]}),{code:0,durls:e.durl.map(e=>{const t=new URL(e.url);return t.protocol=window.location.protocol,{url:t.href,size:e.size}}),qualityDescription:c[e.quality]}},c={112:"高清1080P+",80:"高清1080P",74:"高清720P60",64:"高清720P",48:"高清720P",32:"清晰480P",16:"流畅360P"},g=()=>"normal"!==localStorage.bilibili_helper_download_mode,p=()=>"off"!==localStorage.bilibili_helper_merge_mode,h=()=>"hide"===localStorage.bilibili_helper_show,m=e=>{const t=1073741824,n=1048576;return e>=t?`${(e/t).toFixed(2)}GB`:e>=n?`${(e/n).toFixed(2)}MB`:e>=1024?`${(e/1024).toFixed(2)}KB`:e+"B"},u=(e,t,n,i)=>0!==n?`<strong>${i}</strong>`:`<strong>${e}</strong> 的下载地址(共${t.length}个分段)：`,f=(e,t,n,i)=>{if(0!==n)return"";if(!g())return e.map((e,n)=>`\n        <li><a title="${t}_分段${n+1}" download href="${e.url}">分段${n+1}</a><span class="size">(${m(e.size)})</span></li>\n      `).join("");if(g()&&!p())return e.map((e,n)=>{const i=encodeURIComponent(JSON.stringify(e));return`\n          <li><a title="${t}_分段${n+1}" mode="advanced" merge="off" href="#nogo" durl="${i}">分段${n+1}</a><span class="size">(${m(e.size)})</span><span durl="${i}" class="progress"></span></li>\n        `}).join("");if(g()&&p()){const n=encodeURIComponent(JSON.stringify(e));let i=0;return e.forEach(e=>i+=e.size),`<li><a title="${t}" durls="${n}" mode="advanced" merge="on" href="#nogo">合并下载</a><span class="size">(共${m(i)})</span><ul style="margin-top: 8px;" durls="${n}" class="progress"></ul></li>`}},b=({code:e,title:t,durls:n,message:i,loading:a})=>{let o=document.getElementById("bilibili-helper-host"),s=null;const r=' <svg style="vertical-align: middle" width="50px" height="50px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-pacman"><g ng-attr-style="display:{{config.showBean}}" style="display:block"><circle cx="62.0973" cy="50" r="4" ng-attr-fill="{{config.c2}}" fill="#00a1d6"><animate attributeName="cx" calcMode="linear" values="95;35" keyTimes="0;1" dur="1" begin="-0.67s" repeatCount="indefinite"></animate><animate attributeName="fill-opacity" calcMode="linear" values="0;1;1" keyTimes="0;0.2;1" dur="1" begin="-0.67s" repeatCount="indefinite"></animate></circle><circle cx="82.4973" cy="50" r="4" ng-attr-fill="{{config.c2}}" fill="#00a1d6"><animate attributeName="cx" calcMode="linear" values="95;35" keyTimes="0;1" dur="1" begin="-0.33s" repeatCount="indefinite"></animate><animate attributeName="fill-opacity" calcMode="linear" values="0;1;1" keyTimes="0;0.2;1" dur="1" begin="-0.33s" repeatCount="indefinite"></animate></circle><circle cx="42.2973" cy="50" r="4" ng-attr-fill="{{config.c2}}" fill="#00a1d6"><animate attributeName="cx" calcMode="linear" values="95;35" keyTimes="0;1" dur="1" begin="0s" repeatCount="indefinite"></animate><animate attributeName="fill-opacity" calcMode="linear" values="0;1;1" keyTimes="0;0.2;1" dur="1" begin="0s" repeatCount="indefinite"></animate></circle></g><g ng-attr-transform="translate({{config.showBeanOffset}} 0)" transform="translate(-15 0)"><path d="M50 50L20 50A30 30 0 0 0 80 50Z" ng-attr-fill="{{config.c1}}" fill="#f45a8d" transform="rotate(10.946 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;45 50 50;0 50 50" keyTimes="0;0.5;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></path><path d="M50 50L20 50A30 30 0 0 1 80 50Z" ng-attr-fill="{{config.c1}}" fill="#f45a8d" transform="rotate(-10.946 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;-45 50 50;0 50 50" keyTimes="0;0.5;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></path></g></svg>';o?((s=o.shadowRoot).getElementById("title").innerHTML=a?"加载中"+r:u(t,n,e,i),s.getElementById("durls").innerHTML=a?"":f(n,t,e)):((o=document.createElement("bilibili-helper-host")).id="bilibili-helper-host",o.style.cssText=`display:block;overflow:auto;position:fixed;z-index:${Number.MAX_SAFE_INTEGER};bottom:0;left:0;right:0;max-height:50%;width:100%;background: #fff;border-top: 1px solid #ccc;box-shadow: rgba(0, 0, 0, 0.2) 0 -5px 10px;`,h()?o.classList.add("hide"):o.classList.remove("hide"),o.innerHTML="<style>\n        #bilibili-helper-host.hide{\n          width:auto!important;\n          left:auto!important;\n          background:transparent!important;\n          border:0 none!important;\n          border-radius: 6px 0 0 0;\n          box-shadow: rgba(0, 0, 0, 0.2) -5px -5px 10px!important;\n        }\n        .player-fullscreen-fix #bilibili-helper-host {\n          z-index: 99999!important;\n        }\n      </style>",document.body.appendChild(o),(s=o.attachShadow({mode:"open"})).innerHTML=`\n        <style>\n          p, a, div, span, li, i, b, strong, input, button, label {\n            font-size: inherit;\n          }\n          li {\n            margin-bottom: 5px;\n          }\n          p {\n            margin: 0;\n            line-height: 1.5;\n          }\n          h1 {\n            font-size: 20px;\n            font-weight: bold;\n            margin-bottom: 20px;\n          }\n          h3 {\n            font-size: 16px;\n            margin: 1em 0;\n          }\n          #title {\n            font-size: 16px;\n            font-weight: normal;\n          }\n          #content {\n            display: flex;\n            width: 100%;\n            font-size: 14px;\n            position: relative;\n          }\n          a {\n            color: #00a1d6 !important;\n            text-decoration: none;\n          }\n          a:hover {\n            text-decoration: underline;\n          }\n          a.disabled {\n            color: #666!important;\n          }\n          a.disabled:hover {\n            text-decoration: none;\n            cursor: not-allowed;\n          }\n          #side-bar {\n            flex: 3;\n            padding: 20px;\n            border-right: 1px solid #ccc;\n            margin-right: -1px;\n          }\n          #main {\n            flex: 7;\n            padding: 20px;\n            border-left: 1px solid #ccc;\n          }\n          #notice-frame {\n            width: 100%;\n            padding: 0;\n          }\n          .donate {\n            border-top: 1px solid #ccc;\n            padding-top: 10px;\n          }\n          #zanshang {\n            width: 80%;\n          }\n          .setting-item {\n            margin-bottom: 8px;\n          }\n          .setting-item .label {\n            font-weight: bold;\n            width: 6em;\n            display: inline-block;\n            text-align: right;\n          }\n          .desc {\n            padding-left: 6em;\n          }\n          #actions {\n            position: absolute;\n            right: 0;\n            top: 0;\n          }\n          .btn-large {\n            border: 0 none;\n            background: #f45a8d;\n            border-radius: 6px;\n            color: #fff;\n            padding: 10px 20px;\n          }\n          #toggle {\n            border-radius: 0 0 0 6px;\n            outline: none;\n            cursor: pointer;\n          }\n          .hide #side-bar {\n            display: none;\n          }\n          .hide #main {\n            display: none;\n          }\n          .hide #toggle {\n            border-radius: 6px 0 0 0;\n          }\n          .hide #actions {\n            position: static;\n          }\n      \n          a.btn {\n            border: 0 none;\n            background: #f45a8d;\n            text-decoration: none !important;\n            color: #fff !important;\n            border-radius: 3px;\n            padding: 5px 10px;\n            display: inline-block;\n          }\n          .settings {\n            border-left: 5px solid #ccc;\n            background: #eee;\n            padding: 16px 16px 8px 0;\n          }\n          .size {\n            margin: 0 5px;\n          }\n        </style>\n        <div id="content" ${h()?'class="hide"':""}>\n          <div id="side-bar">\n            <div class="notice">\n              <iframe id="notice-frame" frameborder="0"></iframe>\n            </div>\n            \x3c!--<div class="support">TODO 支持区域</div>--\x3e\n            <div class="donate">\n              <p>微信扫一扫赞赏作者(扫不出来请点击图片后扫大图)：</p>\n              <a href="${internalUrls.zanshang}" target="_blank"><img title="点击查看大图" alt="点击查看大图" id="zanshang" src="${internalUrls.zanshang}"/></a>\n            </div>\n          </div>\n          <div id="main">\n            <h1 style="margin-top: 0;">B站下载助手</h1>\n            <div class="settings">\n              <div class="setting-item">\n                <span class="label">清晰度：</span>\n                <span>请在页面中B站自己的播放器内切换清晰度</span>\n              </div>\n              <div class="setting-item">\n                <span class="label">下载模式：</span>\n                <label><input id="setting-download-mode-advanced" checked name="setting-download-mode" type="radio"/> 高级</label>\n                <label><input id="setting-download-mode-normal" name="setting-download-mode" type="radio"/> 兼容</label>\n                <p class="desc">高级模式支持自动重命名和合并下载，但会占用非常大的系统运行内存<br/>兼容模式直接使用浏览器的默认下载，资源占用很小，但不支持自动重命名和合并下载</p>\n                <p class="desc">建议系统运行内存小于16G的用户使用兼容模式，下载后可以点<a href="http://csser.top/bilibili/merge.html" target="_blank">这里</a>尝试手动合并</p>\n              </div>\n              <div class="setting-item" id="setting-advanced">\n                <span class="label">合并下载：</span>\n                <label><input id="setting-merge-on" checked name="setting-merge" type="radio"> 开</label>\n                <label><input id="setting-merge-off" name="setting-merge" type="radio"> 关</label>\n                <p class="desc">高级模式下载过程中请<strong style="color: red;">不要</strong>刷新或关闭页面，也<strong style="color: red;">不要</strong>切换分集和清晰度</p>\n              </div>\n            </div>\n            <h3 id="title">${a?"加载中"+r:u(t,n,e,i)}</h3>\n            <ul id="durls">\n              ${a?"":f(n,t,e)}\n            </ul>\n            <div class="beg">\n              <p>\n                如果这个工具确实帮到了您，烦请在Chrome商店给个五星好评，谢谢😊\n                <a class="btn" href="https://chrome.google.com/webstore/detail/bfcbfobhcjbkilcbehlnlchiinokiijp/reviews" target="_blank">去评价</a>\n              </p>\n            </div>\n          </div>\n          <div id="actions">\n            <button id="toggle" class="btn-large">${h()?"打开B站下载助手":"收起"}</button>\n          </div>\n        </div>\n      `,(e=>{const t=e.getElementById("setting-download-mode-advanced"),n=e.getElementById("setting-download-mode-normal"),i=e.getElementById("setting-merge-on"),a=e.getElementById("setting-merge-off"),o=e.getElementById("setting-advanced"),s=e.getElementById("durls"),r=e.getElementById("toggle"),l=e.getElementById("actions"),d=e.getElementById("content"),c=document.getElementById("bilibili-helper-host"),m=()=>{t.disabled=!0,n.disabled=!0,i.disabled=!0,a.disabled=!0},u=()=>{t.disabled=!1,n.disabled=!1,i.disabled=!1,a.disabled=!1};g()?(t.checked=!0,n.checked=!1,o.style.display="block"):(t.checked=!1,n.checked=!0,o.style.display="none"),p()?(i.checked=!0,a.checked=!1):(i.checked=!1,a.checked=!0);const f=()=>{e.buildDownloadLinks()};t.addEventListener("change",()=>{t.checked?(localStorage.bilibili_helper_download_mode="advanced",o.style.display="block"):(localStorage.bilibili_helper_download_mode="normal",o.style.display="none"),f()}),n.addEventListener("change",()=>{n.checked?(localStorage.bilibili_helper_download_mode="normal",o.style.display="none"):(localStorage.bilibili_helper_download_mode="advanced",o.style.display="block"),f()}),i.addEventListener("change",()=>{localStorage.bilibili_helper_merge_mode=i.checked?"on":"off",f()}),a.addEventListener("change",()=>{localStorage.bilibili_helper_merge_mode=a.checked?"off":"on",f()}),s.addEventListener("click",t=>{const n=t.target;if("a"===n.tagName.toLowerCase()&&"advanced"===n.getAttribute("mode")){if(t.preventDefault(),t.stopPropagation(),n.classList.contains("disabled"))return;let i=null;const a=n.getAttribute("title");"on"===n.getAttribute("merge")?(i=e.querySelector(`ul[durls="${n.getAttribute("durls")}"]`),m(),x(n,JSON.parse(decodeURIComponent(n.getAttribute("durls"))),a,i).then(u)):(i=e.querySelector(`span[durl="${n.getAttribute("durl")}"]`),m(),v(n,JSON.parse(decodeURIComponent(n.getAttribute("durl"))),a,i).then(u))}}),r.addEventListener("click",()=>{h()?(localStorage.bilibili_helper_show="show",d.classList.remove("hide"),r.innerHTML="收起",c.classList.remove("hide"),l.style.top="0",e.getElementById("notice-frame").contentWindow.postMessage({action:"getHeight"},"https://csser.top")):(localStorage.bilibili_helper_show="hide",d.classList.add("hide"),c.classList.add("hide"),r.innerHTML="打开B站下载助手",l.style.top="0")}),c.addEventListener("scroll",()=>{l.style.top=c.scrollTop+"px"})})(s),(e=>{const t=e.getElementById("notice-frame");t.onload=(()=>{t.contentWindow.postMessage({action:"getHeight"},"https://csser.top"),t.contentWindow.postMessage({action:"setVersion",version:{name:manifest.version,code:parseInt(manifest.version.replace(/\./g,""),10)}},"https://csser.top"),t.contentWindow.postMessage({action:"setTheme",theme:"null"},"https://csser.top")}),window.addEventListener("message",e=>{if("https://csser.top"===e.origin&&e.data&&"reportHeight"===e.data.action&&(t.style.height=e.data.height+10+"px"),"https://csser.top"===e.origin&&e.data&&"showBilibilihelperindooorsmanNoticeDialog"===e.data.action){const t=e.data.notices;t&&t.length>0&&t.forEach(e=>{})}}),t.src=`https://csser.top/bilibili/notice.html?t=${Date.now()}`,window.addEventListener("resize",()=>{t.contentWindow.postMessage({action:"getHeight"},"https://csser.top")})})(s)),s.buildDownloadLinks=(()=>{s.getElementById("durls").innerHTML=f(n,t,e)})},y=(e,t)=>{const n=new Blob([e],{type:"application/octet-stream"}),i=document.createElement("a");i.setAttribute("href",URL.createObjectURL(n)),i.setAttribute("download",t),i.setAttribute("style","position:absolute;top:-9999px;"),document.body.appendChild(i);const a=new MouseEvent("click",{bubbles:!0,cancelable:!0,view:window});i.dispatchEvent(a),setTimeout(()=>{document.body.removeChild(i)},1e3)},w=(e,t,n)=>{let i=null;return fetch(e).then(e=>{const a=e.headers.get("content-length"),o=t||parseInt(a,10);let s=0;return i=setInterval(()=>{n(s,o)},1e3),new Response(new ReadableStream({start(t){const n=e.body.getReader(),i=()=>{n.read().then(({done:e,value:n})=>{e?t.close():(s+=n.byteLength,t.enqueue(n),i())}).catch(e=>{t.error(e)})};i()}}))}).then(e=>e.blob()).finally(()=>{i&&clearInterval(i)})},v=(e,{url:t,size:n},i,a)=>(e.classList.add("disabled"),w(t,n,(e,t)=>{const n=Math.ceil(e/t*100);a.innerHTML=` 正在下载 - ${e}/${t} - ${n}%`}).then(e=>{a.innerHTML=" 已下载完成";const n=new URL(t).pathname.toLowerCase().match(/\.[a-z0-9]+?$/)[0];y(e,i+n)}).finally(()=>{e.classList.remove("disabled")})),x=(e,t,n,i)=>{if(1===t.length)return v(e,t[0],n,i);e.classList.add("disabled");const a=t.map(({url:e,size:t},n)=>{const a=document.createElement("li");return a.innerHTML=`分段${n+1} (${m(t)}) 正在下载`,i.appendChild(a),w(e,t,(e,i)=>{const o=Math.ceil(e/i*100);a.innerHTML=`分段${n+1} (${m(t)}) 正在下载 - ${e}/${i} - ${o}%`}).then(e=>(a.innerHTML=`分段${n+1} (${m(t)}) 已下载完成，等待合并`,e))});return Promise.all(a).then(async e=>{const t=await o.mergeBlobs(Array.from(e));y(t,n+".flv"),i.innerHTML="已完成"}).finally(()=>{e.classList.remove("disabled")})},_=async()=>{if(!e())return;b({loading:!0});const i=await(()=>fetch(window.location.href,r).then(e=>e.text()).then(e=>{const t=e.match(/<script>window.__INITIAL_STATE__=(.+?)<\/script>/);return t&&t[1]?JSON.parse(t[1].replace(";(function(){var s;(s=document.currentScript||document.scripts[document.scripts.length-1]).parentNode.removeChild(s);}());","")):{code:-2,message:"获取视频信息失败，可以尝试清除浏览器cookies和缓存后重试，如多次重试仍然报错，请通过邮箱或QQ群反馈给我，谢谢"}}).catch(()=>l()))();if(i.code)return b(i);let a=localStorage.bilibili_player_settings&&+JSON.parse(localStorage.bilibili_player_settings).setting_config.defquality||112;if(t()){const e=i.videoData.aid;let t,n,o=i.videoData.cid;if(i.videoData.pages.length>1){const e=location.search.match(/p=(\d+)/);let a=i.videoData.pages[0];e&&e[1]&&(a=i.videoData.pages.find(t=>""+t.page==""+e[1])),t=a.page,n=a.part,o=a.cid}const{code:s,durls:c,qualityDescription:g,message:p}=await((e,t,n=112)=>{return fetch(`//api.bilibili.com/x/player/playurl?cid=${t}&avid=${e}&otype=json&qn=${n}`,r).then(e=>e.json()).then(e=>0!==e.code?d(e):d(e.data)).catch(()=>l())})(e,o,a);if(0===s){let e=`[${g}] ${i.videoData.title}`;t&&n&&(e=`[${g}] ${i.videoData.title}_P${t}_${n}`),b({code:s,title:e,durls:c,message:p})}else b({code:s,message:p})}if(n()){const e=i.epList;let t=-1===i.epId?e[e.length-1].ep_id:i.epId,n=e.find(e=>t===e.ep_id);const o=await s(".episode-item.on"),c=await s(".ep-item.cursor");if(o||c){const i=o||c,a=i.parentElement;let r=Array.from(a.querySelectorAll("li")).findIndex(e=>e===i);const l=await s("#eplist_module .ep-list-progress");l&&(r=+l.textContent.match(/(\d+)\/\d+/)[1]-1),n=e[r],t=n.ep_id||n.id}const{code:g,durls:p,qualityDescription:h,message:m}=await((e,t=112)=>{return fetch(`//api.bilibili.com/pgc/player/web/playurl/?ep_id=${e}&qn=${t}&bsource=`,r).then(e=>e.json()).then(e=>0!==e.code?d(e):d(e.result)).catch(()=>l())})(t,a);if(0===g){const e=`[${h}] ${i.mediaInfo.title}_${n.index||n.title}_${n.index_title||n.longTitle}`;b({code:g,title:e,durls:p,message:m})}else b({code:g,message:m})}};_();let $=""+window.location.href,L=""+localStorage.bilibili_player_settings;setInterval(()=>{const e=window.location.href,t=localStorage.bilibili_player_settings;if($!==e&&($=e,_()),L!==t)try{if(JSON.parse(t).setting_config.defquality===JSON.parse(L).setting_config.defquality)return;L=t,_()}catch(e){}},1e3)})();</script></head>
+
+<body class="wy-body-for-nav vsc-initialized">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="https://zh-google-styleguide.readthedocs.io/en/latest/contents/" class="icon icon-home"> Google 开源项目风格指南
+          
+
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://zh-google-styleguide.readthedocs.io/en/latest/search/" method="get">
+    <input type="text" name="q" placeholder="Search docs">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/">Google 开源项目风格指南 (中文版)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-cpp-styleguide/contents/">C++ 风格指南 - 内容目录</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-objc-styleguide/contents/">Objective-C 风格指南 - 内容目录</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/contents/">Python 风格指南 - 内容目录</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/">扉页</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/background/">背景</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_language_rules/#">Python语言规范</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_language_rules/#lint">Lint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_language_rules/#id1">导入</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_language_rules/#id2">包</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_language_rules/#id3">异常</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_language_rules/#id4">全局变量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_language_rules/#id5">嵌套/局部/内部类或函数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_language_rules/#list-comprehensions">列表推导(List Comprehensions)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_language_rules/#id6">默认迭代器和操作符</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_language_rules/#id7">生成器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_language_rules/#lambda">Lambda函数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_language_rules/#id8">条件表达式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_language_rules/#id9">默认参数值</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_language_rules/#properties">属性(properties)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_language_rules/#true-false">True/False的求值</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_language_rules/#id11">过时的语言特性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_language_rules/#lexical-scoping">词法作用域(Lexical Scoping)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_language_rules/#id12">函数与方法装饰器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_language_rules/#id14">线程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_language_rules/#id15">威力过大的特性</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_style_rules/">Python风格规范</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/parting_words/">临别赠言</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-shell-styleguide/contents/">Shell 风格指南 - 内容目录</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="https://zh-google-styleguide.readthedocs.io/en/latest/contents/">Google 开源项目风格指南</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="https://zh-google-styleguide.readthedocs.io/en/latest/contents/">Docs</a> »</li>
+        
+          <li><a href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/contents/">Python 风格指南 - 内容目录</a> »</li>
+        
+      <li>Python语言规范</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/zh-google-styleguide/zh-google-styleguide/blob/master/google-python-styleguide/python_language_rules.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="python">
+<h1>Python语言规范</h1>
+<div class="section" id="lint">
+<h2>Lint</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">对你的代码运行pylint</p>
+</div>
+<dl class="docutils">
+<dt>定义:</dt>
+<dd>pylint是一个在Python源代码中查找bug的工具. 对于C和C++这样的不那么动态的(译者注: 原文是less dynamic)语言, 这些bug通常由编译器来捕获. 由于Python的动态特性, 有些警告可能不对. 不过伪告警应该很少.</dd>
+<dt>优点:</dt>
+<dd>可以捕获容易忽视的错误, 例如输入错误, 使用未赋值的变量等.</dd>
+<dt>缺点:</dt>
+<dd>pylint不完美. 要利用其优势, 我们有时侯需要: a) 围绕着它来写代码 b) 抑制其告警 c) 改进它, 或者d) 忽略它.</dd>
+<dt>结论:</dt>
+<dd><p class="first">确保对你的代码运行pylint.抑制不准确的警告,以便能够将其他警告暴露出来。</p>
+<p>你可以通过设置一个行注释来抑制警告. 例如:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">dict</span> <span class="o">=</span> <span class="s1">'something awful'</span>  <span class="c1"># Bad Idea... pylint: disable=redefined-builtin</span>
+</pre></div>
+</div>
+<p>pylint警告是以一个数字编号(如 <code class="docutils literal notranslate"><span class="pre">C0112</span></code> )和一个符号名(如 <code class="docutils literal notranslate"><span class="pre">empty-docstring</span></code> )来标识的. 在编写新代码或更新已有代码时对告警进行抑制, 推荐使用符号名来标识.</p>
+<p>如果警告的符号名不够见名知意，那么请对其增加一个详细解释。</p>
+<p>采用这种抑制方式的好处是我们可以轻松查找抑制并回顾它们.</p>
+<p>你可以使用命令 <code class="docutils literal notranslate"><span class="pre">pylint</span> <span class="pre">--list-msgs</span></code> 来获取pylint告警列表. 你可以使用命令 <code class="docutils literal notranslate"><span class="pre">pylint</span> <span class="pre">--help-msg=C6409</span></code> , 以获取关于特定消息的更多信息.</p>
+<p>相比较于之前使用的 <code class="docutils literal notranslate"><span class="pre">pylint:</span> <span class="pre">disable-msg</span></code> , 本文推荐使用 <code class="docutils literal notranslate"><span class="pre">pylint:</span> <span class="pre">disable</span></code> .</p>
+<p>要抑制”参数未使用”告警, 你可以用”_”作为参数标识符, 或者在参数名前加”unused_”. 遇到不能改变参数名的情况, 你可以通过在函数开头”提到”它们来消除告警. 例如:</p>
+<div class="last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">unused_b</span><span class="p">,</span> <span class="n">unused_c</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">e</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span>
+    <span class="k">return</span> <span class="n">a</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="id1">
+<h2>导入</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">仅对包和模块使用导入</p>
+</div>
+<dl class="docutils">
+<dt>定义:</dt>
+<dd>模块间共享代码的重用机制.</dd>
+<dt>优点:</dt>
+<dd>命名空间管理约定十分简单. 每个标识符的源都用一种一致的方式指示. x.Obj表示Obj对象定义在模块x中.</dd>
+<dt>缺点:</dt>
+<dd>模块名仍可能冲突. 有些模块名太长, 不太方便.</dd>
+<dt>结论:</dt>
+<dd><p class="first">使用 <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">x</span></code> 来导入包和模块.</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">x</span> <span class="pre">import</span> <span class="pre">y</span></code> , 其中x是包前缀, y是不带前缀的模块名.</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">x</span> <span class="pre">import</span> <span class="pre">y</span> <span class="pre">as</span> <span class="pre">z</span></code>, 如果两个要导入的模块都叫做y或者y太长了.</p>
+<p>例如, 模块 <code class="docutils literal notranslate"><span class="pre">sound.effects.echo</span></code> 可以用如下方式导入:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sound.effects</span> <span class="kn">import</span> <span class="n">echo</span>
+<span class="o">...</span>
+<span class="n">echo</span><span class="o">.</span><span class="n">EchoFilter</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">atten</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="last">导入时不要使用相对名称. 即使模块在同一个包中, 也要使用完整包名. 这能帮助你避免无意间导入一个包两次.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id2">
+<h2>包</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">使用模块的全路径名来导入每个模块</p>
+</div>
+<dl class="docutils">
+<dt>优点:</dt>
+<dd>避免模块名冲突. 查找包更容易.</dd>
+<dt>缺点:</dt>
+<dd>部署代码变难, 因为你必须复制包层次.</dd>
+<dt>结论:</dt>
+<dd><p class="first">所有的新代码都应该用完整包名来导入每个模块.</p>
+<p>应该像下面这样导入:</p>
+<div class="last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reference in code with complete name.</span>
+<span class="kn">import</span> <span class="nn">sound.effects.echo</span>
+
+<span class="c1"># Reference in code with just module name (preferred).</span>
+<span class="kn">from</span> <span class="nn">sound.effects</span> <span class="kn">import</span> <span class="n">echo</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="id3">
+<h2>异常</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">允许使用异常, 但必须小心</p>
+</div>
+<dl class="docutils">
+<dt>定义:</dt>
+<dd>异常是一种跳出代码块的正常控制流来处理错误或者其它异常条件的方式.</dd>
+<dt>优点:</dt>
+<dd>正常操作代码的控制流不会和错误处理代码混在一起. 当某种条件发生时, 它也允许控制流跳过多个框架. 例如, 一步跳出N个嵌套的函数, 而不必继续执行错误的代码.</dd>
+<dt>缺点:</dt>
+<dd>可能会导致让人困惑的控制流. 调用库时容易错过错误情况.</dd>
+<dt>结论:</dt>
+<dd><p class="first">异常必须遵守特定条件:</p>
+<ol class="last arabic">
+<li><p class="first">像这样触发异常: <code class="docutils literal notranslate"><span class="pre">raise</span> <span class="pre">MyException("Error</span> <span class="pre">message")</span></code> 或者 <code class="docutils literal notranslate"><span class="pre">raise</span> <span class="pre">MyException</span></code> . 不要使用两个参数的形式( <code class="docutils literal notranslate"><span class="pre">raise</span> <span class="pre">MyException,</span> <span class="pre">"Error</span> <span class="pre">message"</span></code> )或者过时的字符串异常( <code class="docutils literal notranslate"><span class="pre">raise</span> <span class="pre">"Error</span> <span class="pre">message"</span></code> ).</p>
+</li>
+<li><p class="first">模块或包应该定义自己的特定域的异常基类, 这个基类应该从内建的Exception类继承. 模块的异常基类应该叫做”Error”.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Error</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">永远不要使用 <code class="docutils literal notranslate"><span class="pre">except:</span></code> 语句来捕获所有异常, 也不要捕获 <code class="docutils literal notranslate"><span class="pre">Exception</span></code> 或者 <code class="docutils literal notranslate"><span class="pre">StandardError</span></code> , 除非你打算重新触发该异常, 或者你已经在当前线程的最外层(记得还是要打印一条错误消息). 在异常这方面, Python非常宽容, <code class="docutils literal notranslate"><span class="pre">except:</span></code> 真的会捕获包括Python语法错误在内的任何错误. 使用 <code class="docutils literal notranslate"><span class="pre">except:</span></code> 很容易隐藏真正的bug.</p>
+</li>
+<li><p class="first">尽量减少try/except块中的代码量. try块的体积越大, 期望之外的异常就越容易被触发. 这种情况下, try/except块将隐藏真正的错误.</p>
+</li>
+<li><p class="first">使用finally子句来执行那些无论try块中有没有异常都应该被执行的代码. 这对于清理资源常常很有用, 例如关闭文件.</p>
+</li>
+<li><p class="first">当捕获异常时, 使用 <code class="docutils literal notranslate"><span class="pre">as</span></code> 而不要用逗号. 例如</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="n">Error</span>
+<span class="k">except</span> <span class="n">Error</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="id4">
+<h2>全局变量</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">避免全局变量</p>
+</div>
+<dl class="docutils">
+<dt>定义:</dt>
+<dd>定义在模块级的变量.</dd>
+<dt>优点:</dt>
+<dd>偶尔有用.</dd>
+<dt>缺点:</dt>
+<dd>导入时可能改变模块行为, 因为导入模块时会对模块级变量赋值.</dd>
+<dt>结论:</dt>
+<dd><p class="first">避免使用全局变量, 用类变量来代替. 但也有一些例外:</p>
+<ol class="last arabic simple">
+<li>脚本的默认选项.</li>
+<li>模块级常量. 例如:　PI = 3.14159. 常量应该全大写, 用下划线连接.</li>
+<li>有时候用全局变量来缓存值或者作为函数返回值很有用.</li>
+<li>如果需要, 全局变量应该仅在模块内部可用, 并通过模块级的公共函数来访问.</li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="id5">
+<h2>嵌套/局部/内部类或函数</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">鼓励使用嵌套/本地/内部类或函数</p>
+</div>
+<dl class="docutils">
+<dt>定义:</dt>
+<dd>类可以定义在方法, 函数或者类中. 函数可以定义在方法或函数中. 封闭区间中定义的变量对嵌套函数是只读的.</dd>
+<dt>优点:</dt>
+<dd>允许定义仅用于有效范围的工具类和函数.</dd>
+<dt>缺点:</dt>
+<dd>嵌套类或局部类的实例不能序列化(pickled).</dd>
+<dt>结论:</dt>
+<dd>推荐使用.</dd>
+</dl>
+</div>
+<div class="section" id="list-comprehensions">
+<h2>列表推导(List Comprehensions)</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">可以在简单情况下使用</p>
+</div>
+<dl class="docutils">
+<dt>定义:</dt>
+<dd>列表推导(list comprehensions)与生成器表达式(generator expression)提供了一种简洁高效的方式来创建列表和迭代器, 而不必借助map(), filter(), 或者lambda.</dd>
+<dt>优点:</dt>
+<dd>简单的列表推导可以比其它的列表创建方法更加清晰简单. 生成器表达式可以十分高效, 因为它们避免了创建整个列表.</dd>
+<dt>缺点:</dt>
+<dd>复杂的列表推导或者生成器表达式可能难以阅读.</dd>
+<dt>结论:</dt>
+<dd><p class="first">适用于简单情况. 每个部分应该单独置于一行: 映射表达式, for语句, 过滤器表达式. 禁止多重for语句或过滤器表达式. 复杂情况下还是使用循环.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Yes</span><span class="p">:</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+      <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+          <span class="k">if</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+              <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+
+  <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+      <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+          <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="n">y</span><span class="p">:</span>
+              <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+                  <span class="k">if</span> <span class="n">y</span> <span class="o">!=</span> <span class="n">z</span><span class="p">:</span>
+                      <span class="k">yield</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">complicated_transform</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+          <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">long_generator_function</span><span class="p">(</span><span class="n">parameter</span><span class="p">)</span>
+          <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">)</span>
+
+  <span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+
+  <span class="n">eat</span><span class="p">(</span><span class="n">jelly_bean</span> <span class="k">for</span> <span class="n">jelly_bean</span> <span class="ow">in</span> <span class="n">jelly_beans</span>
+      <span class="k">if</span> <span class="n">jelly_bean</span><span class="o">.</span><span class="n">color</span> <span class="o">==</span> <span class="s1">'black'</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">No</span><span class="p">:</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">]</span>
+
+  <span class="k">return</span> <span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+          <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+          <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+          <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="n">y</span>
+          <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+          <span class="k">if</span> <span class="n">y</span> <span class="o">!=</span> <span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="id6">
+<h2>默认迭代器和操作符</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">如果类型支持, 就使用默认迭代器和操作符. 比如列表, 字典及文件等.</p>
+</div>
+<dl class="docutils">
+<dt>定义:</dt>
+<dd>容器类型, 像字典和列表, 定义了默认的迭代器和关系测试操作符(in和not in)</dd>
+<dt>优点:</dt>
+<dd>默认操作符和迭代器简单高效, 它们直接表达了操作, 没有额外的方法调用. 使用默认操作符的函数是通用的. 它可以用于支持该操作的任何类型.</dd>
+<dt>缺点:</dt>
+<dd>你没法通过阅读方法名来区分对象的类型(例如, has_key()意味着字典). 不过这也是优点.</dd>
+<dt>结论:</dt>
+<dd><p class="first">如果类型支持, 就使用默认迭代器和操作符, 例如列表, 字典和文件. 内建类型也定义了迭代器方法. 优先考虑这些方法, 而不是那些返回列表的方法. 当然，这样遍历容器时，你将不能修改容器.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Yes</span><span class="p">:</span>  <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">adict</span><span class="p">:</span> <span class="o">...</span>
+      <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">adict</span><span class="p">:</span> <span class="o">...</span>
+      <span class="k">if</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">alist</span><span class="p">:</span> <span class="o">...</span>
+      <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">afile</span><span class="p">:</span> <span class="o">...</span>
+      <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">dict</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span> <span class="o">...</span>
+</pre></div>
+</div>
+<div class="last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">No</span><span class="p">:</span>   <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">adict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span> <span class="o">...</span>
+      <span class="k">if</span> <span class="ow">not</span> <span class="n">adict</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="n">key</span><span class="p">):</span> <span class="o">...</span>
+      <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">afile</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span> <span class="o">...</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="id7">
+<h2>生成器</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">按需使用生成器.</p>
+</div>
+<dl class="docutils">
+<dt>定义:</dt>
+<dd>所谓生成器函数, 就是每当它执行一次生成(yield)语句, 它就返回一个迭代器, 这个迭代器生成一个值. 生成值后, 生成器函数的运行状态将被挂起, 直到下一次生成.</dd>
+<dt>优点:</dt>
+<dd>简化代码, 因为每次调用时, 局部变量和控制流的状态都会被保存. 比起一次创建一系列值的函数, 生成器使用的内存更少.</dd>
+<dt>缺点:</dt>
+<dd>没有.</dd>
+<dt>结论:</dt>
+<dd><p class="first">鼓励使用. 注意在生成器函数的文档字符串中使用”Yields:”而不是”Returns:”.</p>
+<p class="last">(译者注: 参看 <a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_style_rules/#comments"><span class="std std-ref">注释</span></a> )</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="lambda">
+<h2>Lambda函数</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">适用于单行函数</p>
+</div>
+<dl class="docutils">
+<dt>定义:</dt>
+<dd>与语句相反, lambda在一个表达式中定义匿名函数. 常用于为 <code class="docutils literal notranslate"><span class="pre">map()</span></code> 和 <code class="docutils literal notranslate"><span class="pre">filter()</span></code> 之类的高阶函数定义回调函数或者操作符.</dd>
+<dt>优点:</dt>
+<dd>方便.</dd>
+<dt>缺点:</dt>
+<dd>比本地函数更难阅读和调试. 没有函数名意味着堆栈跟踪更难理解. 由于lambda函数通常只包含一个表达式, 因此其表达能力有限.</dd>
+<dt>结论:</dt>
+<dd><p class="first">适用于单行函数. 如果代码超过60-80个字符, 最好还是定义成常规(嵌套)函数.</p>
+<p class="last">对于常见的操作符，例如乘法操作符，使用 <code class="docutils literal notranslate"><span class="pre">operator</span></code> 模块中的函数以代替lambda函数. 例如, 推荐使用 <code class="docutils literal notranslate"><span class="pre">operator.mul</span></code> , 而不是 <code class="docutils literal notranslate"><span class="pre">lambda</span> <span class="pre">x,</span> <span class="pre">y:</span> <span class="pre">x</span> <span class="pre">*</span> <span class="pre">y</span></code> .</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id8">
+<h2>条件表达式</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">适用于单行函数</p>
+</div>
+<dl class="docutils">
+<dt>定义:</dt>
+<dd>条件表达式是对于if语句的一种更为简短的句法规则. 例如: <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">1</span> <span class="pre">if</span> <span class="pre">cond</span> <span class="pre">else</span> <span class="pre">2</span></code> .</dd>
+<dt>优点:</dt>
+<dd>比if语句更加简短和方便.</dd>
+<dt>缺点:</dt>
+<dd>比if语句难于阅读. 如果表达式很长， 难于定位条件.</dd>
+<dt>结论:</dt>
+<dd>适用于单行函数. 在其他情况下，推荐使用完整的if语句.</dd>
+</dl>
+</div>
+<div class="section" id="id9">
+<h2>默认参数值</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">适用于大部分情况.</p>
+</div>
+<dl class="docutils">
+<dt>定义:</dt>
+<dd>你可以在函数参数列表的最后指定变量的值, 例如, <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">foo(a,</span> <span class="pre">b</span> <span class="pre">=</span> <span class="pre">0):</span></code> . 如果调用foo时只带一个参数, 则b被设为0. 如果带两个参数, 则b的值等于第二个参数.</dd>
+<dt>优点:</dt>
+<dd>你经常会碰到一些使用大量默认值的函数, 但偶尔(比较少见)你想要覆盖这些默认值. 默认参数值提供了一种简单的方法来完成这件事, 你不需要为这些罕见的例外定义大量函数. 同时, Python也不支持重载方法和函数, 默认参数是一种”仿造”重载行为的简单方式.</dd>
+<dt>缺点:</dt>
+<dd>默认参数只在模块加载时求值一次. 如果参数是列表或字典之类的可变类型, 这可能会导致问题. 如果函数修改了对象(例如向列表追加项), 默认值就被修改了.</dd>
+<dt>结论:</dt>
+<dd><p class="first">鼓励使用, 不过有如下注意事项:</p>
+<p>不要在函数或方法定义中使用可变对象作为默认值.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Yes</span><span class="p">:</span> <span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+         <span class="k">if</span> <span class="n">b</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+             <span class="n">b</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+<div class="last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">No</span><span class="p">:</span>  <span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="p">[]):</span>
+         <span class="o">...</span>
+<span class="n">No</span><span class="p">:</span>  <span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()):</span>  <span class="c1"># The time the module was loaded???</span>
+         <span class="o">...</span>
+<span class="n">No</span><span class="p">:</span>  <span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">FLAGS</span><span class="o">.</span><span class="n">my_thing</span><span class="p">):</span>  <span class="c1"># sys.argv has not yet been parsed...</span>
+         <span class="o">...</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="properties">
+<h2>属性(properties)</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">访问和设置数据成员时, 你通常会使用简单, 轻量级的访问和设置函数. 建议用属性（properties）来代替它们.</p>
+</div>
+<dl class="docutils">
+<dt>定义:</dt>
+<dd>一种用于包装方法调用的方式. 当运算量不大, 它是获取和设置属性(attribute)的标准方式.</dd>
+<dt>优点:</dt>
+<dd>通过消除简单的属性(attribute)访问时显式的get和set方法调用, 可读性提高了. 允许懒惰的计算. 用Pythonic的方式来维护类的接口. 就性能而言, 当直接访问变量是合理的, 添加访问方法就显得琐碎而无意义. 使用属性(properties)可以绕过这个问题. 将来也可以在不破坏接口的情况下将访问方法加上.</dd>
+<dt>缺点:</dt>
+<dd>属性(properties)是在get和set方法声明后指定, 这需要使用者在接下来的代码中注意: set和get是用于属性(properties)的(除了用 <code class="docutils literal notranslate"><span class="pre">@property</span></code> 装饰器创建的只读属性).  必须继承自object类. 可能隐藏比如操作符重载之类的副作用. 继承时可能会让人困惑.</dd>
+<dt>结论:</dt>
+<dd><p class="first">你通常习惯于使用访问或设置方法来访问或设置数据, 它们简单而轻量. 不过我们建议你在新的代码中使用属性. 只读属性应该用 <code class="docutils literal notranslate"><span class="pre">@property</span></code> <a class="reference external" href="http://google-styleguide.googlecode.com/svn/trunk/pyguide.html#Function_and_Method_Decorators">装饰器</a> 来创建.</p>
+<p>如果子类没有覆盖属性, 那么属性的继承可能看上去不明显. 因此使用者必须确保访问方法间接被调用, 以保证子类中的重载方法被属性调用(使用模板方法设计模式).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Yes</span><span class="p">:</span> <span class="kn">import</span> <span class="nn">math</span>
+
+     <span class="k">class</span> <span class="nc">Square</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+         <span class="sd">"""A square with two properties: a writable area and a read-only perimeter.</span>
+
+<span class="sd">         To use:</span>
+<span class="sd">         &gt;&gt;&gt; sq = Square(3)</span>
+<span class="sd">         &gt;&gt;&gt; sq.area</span>
+<span class="sd">         9</span>
+<span class="sd">         &gt;&gt;&gt; sq.perimeter</span>
+<span class="sd">         12</span>
+<span class="sd">         &gt;&gt;&gt; sq.area = 16</span>
+<span class="sd">         &gt;&gt;&gt; sq.side</span>
+<span class="sd">         4</span>
+<span class="sd">         &gt;&gt;&gt; sq.perimeter</span>
+<span class="sd">         16</span>
+<span class="sd">         """</span>
+
+         <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">side</span><span class="p">):</span>
+             <span class="bp">self</span><span class="o">.</span><span class="n">side</span> <span class="o">=</span> <span class="n">side</span>
+
+         <span class="k">def</span> <span class="nf">__get_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+             <span class="sd">"""Calculates the 'area' property."""</span>
+             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">side</span> <span class="o">**</span> <span class="mi">2</span>
+
+         <span class="k">def</span> <span class="nf">___get_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+             <span class="sd">"""Indirect accessor for 'area' property."""</span>
+             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_area</span><span class="p">()</span>
+
+         <span class="k">def</span> <span class="nf">__set_area</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">area</span><span class="p">):</span>
+             <span class="sd">"""Sets the 'area' property."""</span>
+             <span class="bp">self</span><span class="o">.</span><span class="n">side</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">area</span><span class="p">)</span>
+
+         <span class="k">def</span> <span class="nf">___set_area</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">area</span><span class="p">):</span>
+             <span class="sd">"""Indirect setter for 'area' property."""</span>
+             <span class="bp">self</span><span class="o">.</span><span class="n">_SetArea</span><span class="p">(</span><span class="n">area</span><span class="p">)</span>
+
+         <span class="n">area</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">___get_area</span><span class="p">,</span> <span class="n">___set_area</span><span class="p">,</span>
+                         <span class="n">doc</span><span class="o">=</span><span class="s2">"""Gets or sets the area of the square."""</span><span class="p">)</span>
+
+         <span class="nd">@property</span>
+         <span class="k">def</span> <span class="nf">perimeter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">side</span> <span class="o">*</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<p class="last">(译者注: 老实说, 我觉得这段示例代码很不恰当, 有必要这么蛋疼吗?)</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="true-false">
+<h2>True/False的求值</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">尽可能使用隐式false</p>
+</div>
+<dl class="docutils">
+<dt>定义:</dt>
+<dd>Python在布尔上下文中会将某些值求值为false. 按简单的直觉来讲, 就是所有的”空”值都被认为是false. 因此0， None, [], {}, “” 都被认为是false.</dd>
+<dt>优点:</dt>
+<dd>使用Python布尔值的条件语句更易读也更不易犯错. 大部分情况下, 也更快.</dd>
+<dt>缺点:</dt>
+<dd>对C/C++开发人员来说, 可能看起来有点怪.</dd>
+<dt>结论:</dt>
+<dd><p class="first">尽可能使用隐式的false, 例如: 使用 <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">foo:</span></code> 而不是 <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">foo</span> <span class="pre">!=</span> <span class="pre">[]:</span></code> . 不过还是有一些注意事项需要你铭记在心:</p>
+<ol class="last arabic">
+<li><p class="first">永远不要用==或者!=来比较单件, 比如None. 使用is或者is not.</p>
+</li>
+<li><p class="first">注意: 当你写下 <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">x:</span></code> 时, 你其实表示的是 <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">x</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">None</span></code> . 例如: 当你要测试一个默认值是None的变量或参数是否被设为其它值. 这个值在布尔语义下可能是false!</p>
+</li>
+<li><p class="first">永远不要用==将一个布尔量与false相比较. 使用 <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">not</span> <span class="pre">x:</span></code> 代替. 如果你需要区分false和None, 你应该用像 <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">not</span> <span class="pre">x</span> <span class="pre">and</span> <span class="pre">x</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">None:</span></code> 这样的语句.</p>
+</li>
+<li><p class="first">对于序列(字符串, 列表, 元组), 要注意空序列是false. 因此 <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">not</span> <span class="pre">seq:</span></code> 或者 <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">seq:</span></code> 比 <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">len(seq):</span></code> 或 <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">not</span> <span class="pre">len(seq):</span></code> 要更好.</p>
+</li>
+<li><p class="first">处理整数时, 使用隐式false可能会得不偿失(即不小心将None当做0来处理). 你可以将一个已知是整型(且不是len()的返回结果)的值与0比较.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Yes</span><span class="p">:</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">users</span><span class="p">:</span>
+         <span class="k">print</span> <span class="s1">'no users'</span>
+
+     <span class="k">if</span> <span class="n">foo</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">handle_zero</span><span class="p">()</span>
+
+     <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">handle_multiple_of_ten</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">No</span><span class="p">:</span>  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">users</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+         <span class="k">print</span> <span class="s1">'no users'</span>
+
+     <span class="k">if</span> <span class="n">foo</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">foo</span><span class="p">:</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">handle_zero</span><span class="p">()</span>
+
+     <span class="k">if</span> <span class="ow">not</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">10</span><span class="p">:</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">handle_multiple_of_ten</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">注意‘0’(字符串)会被当做true.</p>
+</li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="id11">
+<h2>过时的语言特性</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">尽可能使用字符串方法取代字符串模块. 使用函数调用语法取代apply(). 使用列表推导, for循环取代filter(), map()以及reduce().</p>
+</div>
+<dl class="docutils">
+<dt>定义:</dt>
+<dd>当前版本的Python提供了大家通常更喜欢的替代品.</dd>
+<dt>结论:</dt>
+<dd><p class="first">我们不使用不支持这些特性的Python版本, 所以没理由不用新的方式.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Yes</span><span class="p">:</span> <span class="n">words</span> <span class="o">=</span> <span class="n">foo</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
+
+     <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">my_list</span> <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">5</span><span class="p">]</span>
+
+     <span class="nb">map</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>    <span class="c1"># Ok. No inlined lambda expression.</span>
+
+     <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">No</span><span class="p">:</span>  <span class="n">words</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="s1">':'</span><span class="p">)</span>
+
+     <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mi">5</span><span class="p">,</span> <span class="n">my_list</span><span class="p">))</span>
+
+     <span class="nb">apply</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="lexical-scoping">
+<h2>词法作用域(Lexical Scoping)</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">推荐使用</p>
+</div>
+<dl class="docutils">
+<dt>定义:</dt>
+<dd><p class="first">嵌套的Python函数可以引用外层函数中定义的变量, 但是不能够对它们赋值. 变量绑定的解析是使用词法作用域, 也就是基于静态的程序文本. 对一个块中的某个名称的任何赋值都会导致Python将对该名称的全部引用当做局部变量, 甚至是赋值前的处理. 如果碰到global声明, 该名称就会被视作全局变量.</p>
+<p>一个使用这个特性的例子:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_adder</span><span class="p">(</span><span class="n">summand1</span><span class="p">):</span>
+    <span class="sd">"""Returns a function that adds numbers to a given number."""</span>
+    <span class="k">def</span> <span class="nf">adder</span><span class="p">(</span><span class="n">summand2</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">summand1</span> <span class="o">+</span> <span class="n">summand2</span>
+
+    <span class="k">return</span> <span class="n">adder</span>
+</pre></div>
+</div>
+<p class="last">(译者注: 这个例子有点诡异, 你应该这样使用这个函数: <code class="docutils literal notranslate"><span class="pre">sum</span> <span class="pre">=</span> <span class="pre">get_adder(summand1)(summand2)</span></code> )</p>
+</dd>
+<dt>优点:</dt>
+<dd>通常可以带来更加清晰, 优雅的代码. 尤其会让有经验的Lisp和Scheme(还有Haskell, ML等)程序员感到欣慰.</dd>
+<dt>缺点:</dt>
+<dd><p class="first">可能导致让人迷惑的bug. 例如下面这个依据 <a class="reference external" href="http://www.python.org/dev/peps/pep-0227/">PEP-0227</a> 的例子:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">bar</span><span class="p">():</span>
+        <span class="k">print</span> <span class="n">i</span><span class="p">,</span>
+    <span class="c1"># ...</span>
+    <span class="c1"># A bunch of code here</span>
+    <span class="c1"># ...</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>  <span class="c1"># Ah, i *is* local to Foo, so this is what Bar sees</span>
+        <span class="k">print</span> <span class="n">i</span><span class="p">,</span>
+    <span class="n">bar</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>因此 <code class="docutils literal notranslate"><span class="pre">foo([1,</span> <span class="pre">2,</span> <span class="pre">3])</span></code> 会打印 <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">2</span> <span class="pre">3</span> <span class="pre">3</span></code> , 不是 <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">2</span> <span class="pre">3</span> <span class="pre">4</span></code> .</p>
+<p class="last">(译者注: x是一个列表, for循环其实是将x中的值依次赋给i.这样对i的赋值就隐式的发生了, 整个foo函数体中的i都会被当做局部变量, 包括bar()中的那个. 这一点与C++之类的静态语言还是有很大差别的.)</p>
+</dd>
+<dt>结论:</dt>
+<dd>鼓励使用.</dd>
+</dl>
+</div>
+<div class="section" id="id12">
+<h2>函数与方法装饰器</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">如果好处很显然, 就明智而谨慎的使用装饰器</p>
+</div>
+<dl class="docutils">
+<dt>定义:</dt>
+<dd><p class="first"><a class="reference external" href="https://docs.python.org/release/2.4.3/whatsnew/node6.html">用于函数及方法的装饰器</a> (也就是@标记). 最常见的装饰器是@classmethod 和@staticmethod, 用于将常规函数转换成类方法或静态方法. 不过, 装饰器语法也允许用户自定义装饰器. 特别地, 对于某个函数 <code class="docutils literal notranslate"><span class="pre">my_decorator</span></code> , 下面的两段代码是等效的:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+   <span class="nd">@my_decorator</span>
+   <span class="k">def</span> <span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+       <span class="c1"># method body ...</span>
+</pre></div>
+</div>
+<div class="last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># method body ...</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="n">my_decorator</span><span class="p">(</span><span class="n">method</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+<dt>优点:</dt>
+<dd>优雅的在函数上指定一些转换. 该转换可能减少一些重复代码, 保持已有函数不变(enforce invariants), 等.</dd>
+<dt>缺点:</dt>
+<dd>装饰器可以在函数的参数或返回值上执行任何操作, 这可能导致让人惊异的隐藏行为. 而且, 装饰器在导入时执行. 从装饰器代码的失败中恢复更加不可能.</dd>
+<dt>结论:</dt>
+<dd><p class="first">如果好处很显然, 就明智而谨慎的使用装饰器. 装饰器应该遵守和函数一样的导入和命名规则. 装饰器的python文档应该清晰的说明该函数是一个装饰器. 请为装饰器编写单元测试.</p>
+<p>避免装饰器自身对外界的依赖(即不要依赖于文件, socket, 数据库连接等), 因为装饰器运行时这些资源可能不可用(由 <code class="docutils literal notranslate"><span class="pre">pydoc</span></code> 或其它工具导入). 应该保证一个用有效参数调用的装饰器在所有情况下都是成功的.</p>
+<p class="last">装饰器是一种特殊形式的”顶级代码”. 参考后面关于 <a class="reference internal" href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_style_rules/#main"><span class="std std-ref">Main</span></a> 的话题.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id14">
+<h2>线程</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">不要依赖内建类型的原子性.</p>
+</div>
+<p>虽然Python的内建类型例如字典看上去拥有原子操作, 但是在某些情形下它们仍然不是原子的(即: 如果__hash__或__eq__被实现为Python方法)且它们的原子性是靠不住的. 你也不能指望原子变量赋值(因为这个反过来依赖字典).</p>
+<p>优先使用Queue模块的 <code class="docutils literal notranslate"><span class="pre">Queue</span></code> 数据类型作为线程间的数据通信方式. 另外, 使用threading模块及其锁原语(locking primitives). 了解条件变量的合适使用方式, 这样你就可以使用 <code class="docutils literal notranslate"><span class="pre">threading.Condition</span></code> 来取代低级别的锁了.</p>
+</div>
+<div class="section" id="id15">
+<h2>威力过大的特性</h2>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">避免使用这些特性</p>
+</div>
+<dl class="docutils">
+<dt>定义:</dt>
+<dd>Python是一种异常灵活的语言, 它为你提供了很多花哨的特性, 诸如元类(metaclasses), 字节码访问, 任意编译(on-the-fly compilation), 动态继承, 对象父类重定义(object reparenting), 导入黑客(import hacks), 反射, 系统内修改(modification of system internals), 等等.</dd>
+<dt>优点:</dt>
+<dd>强大的语言特性, 能让你的代码更紧凑.</dd>
+<dt>缺点:</dt>
+<dd>使用这些很”酷”的特性十分诱人, 但不是绝对必要. 使用奇技淫巧的代码将更加难以阅读和调试. 开始可能还好(对原作者而言), 但当你回顾代码, 它们可能会比那些稍长一点但是很直接的代码更加难以理解.</dd>
+<dt>结论:</dt>
+<dd>在你的代码中避免这些特性.</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_style_rules/" class="btn btn-neutral float-right" title="Python风格规范" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/background/" class="btn btn-neutral" title="背景" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr>
+
+  <div role="contentinfo">
+    <p>
+        © Copyright 
+      
+        <span class="commit">
+          Revision <code>f837c554</code>.
+        </span>
+      
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://zh-google-styleguide.readthedocs.io/en/latest/">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://readthedocs.org/projects/zh-google-styleguide/downloads/pdf/latest/">pdf</a></dd>
+        
+          <dd><a href="https://readthedocs.org/projects/zh-google-styleguide/downloads/htmlzip/latest/">htmlzip</a></dd>
+        
+          <dd><a href="https://readthedocs.org/projects/zh-google-styleguide/downloads/epub/latest/">epub</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="https://readthedocs.org/projects/zh-google-styleguide/?fromdocs=zh-google-styleguide">Project Home</a>
+          </dd>
+          <dd>
+            <a href="https://readthedocs.org/builds/zh-google-styleguide/?fromdocs=zh-google-styleguide">Builds</a>
+          </dd>
+      </dl>
+      <hr>
+      Free document hosting provided by <a href="http://www.readthedocs.org/">Read the Docs</a>.
+
+    </div>
+  </div>
+
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'',
+              LANGUAGE:'en',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="./Python语言规范 — Google 开源项目风格指南_files/jquery-2.0.3.min.js.下载"></script>
+        <script type="text/javascript" src="./Python语言规范 — Google 开源项目风格指南_files/jquery-migrate-1.2.1.min.js.下载"></script>
+        <script type="text/javascript" src="./Python语言规范 — Google 开源项目风格指南_files/underscore.js.下载"></script>
+        <script type="text/javascript" src="./Python语言规范 — Google 开源项目风格指南_files/doctools.js.下载"></script>
+        <script type="text/javascript" src="./Python语言规范 — Google 开源项目风格指南_files/readthedocs-doc-embed.js.下载"></script>
+    
+
+  
+
+  <script type="text/javascript" src="./Python语言规范 — Google 开源项目风格指南_files/theme.js.下载"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+
+<style>QUZHUANPAN-PLUGIN {display: inline;cursor: pointer;}QUZHUANPAN-PLUGIN-TIPS {white-space: nowrap;}.QUZHUANPAN-PLUGIN-VALIDATE-NOTPASS {text-decoration: line-through;color: #ccc;}QUZHUANPAN-PLUGIN-TIPS::before {background-position: center;background-size: 100% 100%;background-repeat: no-repeat;box-sizing: border-box;width: 1em;height: 1em;margin: 0 1px .15em 1px;vertical-align: middle;display: inline-block;}.QUZHUANPAN-PLUGIN-VALIDATE-NOTPASS>QUZHUANPAN-PLUGIN-TIPS::before {content: '';background-image: url(http://www.quzhuanpan.com/media/tampermonkey/tips/error.png)}.QUZHUANPAN-PLUGIN-VALIDATE-PASS>QUZHUANPAN-PLUGIN-TIPS::before {content: '';background-image: url(http://www.quzhuanpan.com/media/tampermonkey/tips/success.png)}.QUZHUANPAN-PLUGIN-VALIDATE-UNCERTAINTY>QUZHUANPAN-PLUGIN-TIPS::before {content: '';background-image: url(http://www.quzhuanpan.com/media/tampermonkey/tips/uncertainty.png)}.QUZHUANPAN-PLUGIN-VALIDATE-LOCK>QUZHUANPAN-PLUGIN-TIPS::before{content: '';background-image: url(http://www.quzhuanpan.com/media/tampermonkey/tips/lock.png)}</style></body></html>

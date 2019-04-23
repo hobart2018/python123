@@ -1,0 +1,92 @@
+/*标题*/
+#cnblogs_post_body h1 {
+background: gray !important;
+background: #406CA4 !important;
+border-radius: 4px 4px 4px 4px !important;
+box-shadow: 0 0 0 1px #5F5A4B, 1px 1px 6px 1px rgba(10, 10, 0, 0.5);
+color: #FFFFFF;
+font-family: "Courier New", "宋体", "黑体", Arial;
+font-size: 16px;
+font-weight: bold;
+margin: 15px 0 !important;
+padding: 5px 0 5px 20px;
+}
+#cnblogs_post_body h2 {
+    background: gray !important;
+    background-color: #217467!important;
+    /*background: none repeat scroll 0% 0% rgb(43, 102, 149);*/
+    border-radius: 4px 4px 4px 4px !important;
+    box-shadow: 0 0 0 1px #5F5A4B, 1px 1px 6px 1px rgba(10, 10, 0, 0.5);
+    color: #FFFFFF;
+    font-family: "Courier New", "宋体", "黑体", Arial;
+    font-size: 14px;
+    font-weight: bold;
+    /*height: 25px;*/
+    /*line-height: 25px;*/
+    margin: 15px 0px !important;
+    padding: 5px 0px 5px 20px;
+  /*//  text-shadow: 2px 2px 3px rgb(34, 34, 34);*/
+    width: 50%;
+    /*display:inline-block;*/
+}
+#cnblogs_post_body h2 a{
+   color: rgb(235, 235, 235);
+}
+#cnblogs_post_body h2 a:hover{
+   color: rgb(255, 102, 0);
+}
+
+#cnblogs_post_body h3{
+    background: lightsteelblue;
+    font-weight:bold;
+    //color:red;
+    //color:white;
+    font-size:14px;
+    padding: 5px 10px 5px 10px;
+    //border:1px solid red;
+    display:inline-block;
+    border-radius: 4px 4px 4px 4px !important;
+}
+
+
+
+/*****home和头部开始**************************/
+#home {
+    margin: 0 auto;
+    width: 72%;/*原始65*/
+    min-width: 980px;/*页面的最低宽度,也就是页面顶部的宽度*/
+    background-color: #fff;
+    padding: 30px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3);
+}
+/*头部导航栏*/
+#navigator {
+    font-size:15px;
+    border-bottom: 1px solid #ededed;
+    border-top: 1px solid #ededed;
+    height: 60px;/*导航栏高度，原始50*/
+    clear: both;
+    margin-top: 25px;
+}
+/*导航栏设置,可以自定义导航栏的目录*/
+#navList {
+    min-height: 35px;
+    float: left;
+}
+    #navList li {        /*每一个栏目节点*/
+        float: left;
+        margin: 0 5px 0 0; /*这里原来是0 40px 0 0 */
+    }
+    #navList a {         /*栏目文字的格式*/
+        display: block;
+        width: 5em;
+        height: 22px;
+        float: left;
+        text-align: center;
+        padding-top: 19px;
+    }
+img {
+ max-width: 100%;
+}
